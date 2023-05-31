@@ -1,0 +1,43 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Build Docker Image') {
+              steps {
+        script {
+          node {
+            git branch: 'main', url: 'https://github.com/snirkap/jenkins.project.git'
+            def myEnv = docker.build 'snirkapah1/jenkins-project:1'
+          }
+        }
+      }
+    }
+
+    stage('Upload Image to Docker Hub') {
+      steps {
+        script {
+          docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+            def imageName = 'snirkapah1/jenkins-project:1'
+            docker.image(imageName).push()
+          }
+        }
+      }
+    }
+
+    stage('Deploy to Kubernetes') {
+      environment {
+        KUBECONFIG = credentials('kubeconfig-credentials')
+      }
+      steps {
+        script {
+          def deploymentName = "dep-jenkins-project"
+          def containerName = "jenkins-project-con"
+          def image = "snirkapah1/jenkins-project:1"
+          def namespace = "default"
+
+          sh "kubectl create deployment ${deploymentName} --image=${image} -n ${namespace}"
+        }
+      }
+    }
+  }
+}

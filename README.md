@@ -1,1 +1,1 @@
-# jenkins.project
+i did a automation for a scenario that a developer psuh his code for github. the automation pull the code from the github and make from the code an doocker image, upload the image to dockerhub, and after this make a pod in kubernetes from the same image for that developer so he can test his code.

@@ -2,6 +2,48 @@
 Jenkins Automation for Docker Image Deployment,
 This repository contains an automation script for Jenkins to facilitate the continuous integration and deployment process. It is designed to trigger a series of steps upon receiving a push event to a GitHub repository. The automation process involves cloning the code from GitHub, building a Docker image from a Dockerfile, uploading the image to Docker Hub, and finally deploying the image for the developer to test their code changes.
 ## tutorial
+### How to run the project:
+1. first you need to go to jenkins to: 
+    
+   Dashboard > Manage Jenkins > Plugin Manager
+
+   and install this plugins:
+
+   CloudBees Docker Build and Publish plugin, Docker Commons, Docker Pipeline, Pipeline: GitHub Groovy Libraries, GitHub plugin, GitHub Pipeline for Blue Ocean
+   Version, GitHub Branch Source, GitHub API Plugin, Git client, Git, Kubernetes, Kubernetes Client API Plugin, Kubernetes Credentials Plugin, Kubernetes 
+   Credentials Provider.
+   
+2. you need to create credentials for docker hub and kubernetes.
+
+   for docker hub you neet to go in jenkins to:
+   
+   Dashboard > Manage Jenkins > Credentials > System > Global credentials > Add Credential. 
+
+   create a new credential and put user name and password to your docker hub user and calld to the credential "docker-hub-credentials" this should look like 
+   this. 
+   ![image](https://github.com/snirkap/jenkins.project/assets/120733215/2c7b237f-7d4a-4486-b0d4-0d3bae9c4b26)
+
+
+   for kubernetes you need to:
+   1. Login to Kubernetes master server.
+   2. Navigate to ~/.kube directory and copy the content of config file
+   3. Go to Jenkins Dashboard > Manage Jenkins > Manage Credentials > Jenkins > Global Credentials > Add Credential
+   4. calld it " kubeconfig-credentials " 
+
+   Here select Type as Kubernetes configuration (kubeconfig)
+   Select Enter directly and paste the content of kubeconfig copied in step 2 in this box
+
+   ![image](https://github.com/snirkap/jenkins.project/assets/120733215/94cdc179-5ac9-419b-b207-91b842f1af58)
+
+3. copy the pipeline file to a new pipline in your jenkins and change the value of "def imageName" in the "Upload Image to Docker Hub" stage  to "your user name 
+   in docker hub/the name of your repository:the version of the image that you want", and write the same in the value of " def image " in the " Deploy to 
+   Kubernetes " stage.
+
+4. start the pipeline and you will have a new Deployment in your Cluster.  
+
+
+   
+
 * index.html
   ```
   <!DOCTYPE html>

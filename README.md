@@ -62,7 +62,7 @@ this is a simple index.html file that contain random text for example: "hello fr
 The "FROM" instruction is used to specify the base image for this Docker image. In this case, the base image is "httpd:2.4", which means it's based on Apache HTTP Server version 2.4. The httpd image is an official image provided by the Docker team, and it sets up a basic Apache web server environment.
 ### COPY index.html /usr/local/apache2/htdocs/
 The "COPY" instruction is used to copy files and directories from the local filesystem (the context of the build) into the Docker image. The format for this instruction is "COPY <src> <dest>", where <src> is the path of the file or directory on the local filesystem, and <dest> is the destination path within the Docker image.
-In this Dockerfile, "COPY . /usr/local/apache2/htdocs/" is used to copy the index.html file into the "/usr/local/apache2/htdocs/" directory within the Docker image. The "/usr/local/apache2/htdocs/" directory is the default document root directory for the Apache HTTP Server.
+In this Dockerfile, "COPY index.html /usr/local/apache2/htdocs/" is used to copy the index.html file into the "/usr/local/apache2/htdocs/" directory within the Docker image. The "/usr/local/apache2/htdocs/" directory is the default document root directory for the Apache HTTP Server.
 * jenkinsfile
   ```
     pipeline {

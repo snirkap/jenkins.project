@@ -7,7 +7,7 @@ This repository contains an automation script for Jenkins to facilitate the cont
     
    Dashboard > Manage Jenkins > Plugin Manager
 
-   and install this plugins:
+   and install these plugins:
 
    CloudBees Docker Build and Publish plugin, Docker Commons, Docker Pipeline, Pipeline: GitHub Groovy Libraries, GitHub plugin, GitHub Pipeline for Blue Ocean
    Version, GitHub Branch Source, GitHub API Plugin, Git client, Git, Kubernetes, Kubernetes Client API Plugin, Kubernetes Credentials Plugin, Kubernetes 

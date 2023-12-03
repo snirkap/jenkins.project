@@ -1,6 +1,9 @@
 # jenkins project
 Jenkins Automation for Docker Image Deployment,
 This repository contains an automation script for Jenkins to facilitate the continuous integration and deployment process. It is designed to trigger a series of steps upon receiving a push event to a GitHub repository. The automation process involves cloning the code from GitHub, building a Docker image from a Dockerfile, uploading the image to Docker Hub, and finally deploying the image for the developer to test their code changes.
+## Here you can see a diagram explaining the project:
+![Screenshot 2023-12-03 101725](https://github.com/snirkap/jenkins.project/assets/120733215/93052c2e-c084-432c-9578-65711b4f1475)
+
 ## tutorial
 ### How to run the project:
 1. first you need to go to jenkins to: 
